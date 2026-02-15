@@ -10,10 +10,6 @@ nav a:focus{
 }
 
 /*Write selector/rule property to position the default position for the skip class element*/
-.skip{
-     position: relative;
-}
-
 .skip a{
      position: absolute;
      top: -65px;
@@ -29,6 +25,9 @@ nav a:focus{
 :focus{
      border: 5px dashed green;
 }
+nav a:focus {
+     border: 2px dotted purple;
+}
 
 /*Write selector/rule property to style the container */
 .container{
@@ -38,7 +37,7 @@ nav a:focus{
 }
 
 /*Write selector/rule property to add the background image to the first div in the grid and place it in the grid. */
-.container > div:first-child{
+.container > :first-child{
      background-image: url('../images/header.jpg');
      background-repeat: no-repeat;
      background-size: cover;
@@ -48,58 +47,38 @@ nav a:focus{
 
 /* Steps 6 and 7: Write the selector/rule properties to  place the next five elements in the next
  five rows in the grid. */
-.accounts{
-     grid-column: 2 / span 3;
-     grid-row: 2 / span 1;
-     margin: 70px 0 70px 0;
+.accounts,
+.onlinebanking,
+.security,
+.loans,
+.contact {
+  grid-column: 2 / span 3;
 }
-.onlinebanking{
-     grid-column: 2 / span 3;
-     grid-row: 3 / span 1;
-     margin: 70px 0 70px 0;
+
+.accounts-image,
+.onlinebanking-image,
+.security-image,
+.loans-image,
+.contact-image {
+  grid-column: 1 / -1;
+  max-height: 675px;
+  overflow: hidden;
 }
-.security{
-     grid-column: 2 / span 3;
-     grid-row: 4 / span 1;
-     margin: 70px 0 70px 0;
-}
-.loans{
-     grid-column: 2 / span 3;
-     grid-row: 5 / span 1;
-}
-.contact{
-     grid-column: 2 / span 3;
-     grid-row: 6 / span 1;
-     margin: 70px 0 70px 0;
-}
-.accounts-image{
-     grid-column: 1 / -1;
-     grid-row: 2 / span 1;
-     max-height: 675px;
-}
-.onlinebanking-image{
-     grid-column: 1 / -1;
-     grid-row: 3 / span 1;
-     max-height: 675px;
-}
-.security-image{
-     grid-column: 1 / -1;
-     grid-row: 4 / span 1;
-     max-height: 675px;
-}
-.loans-image{
-     grid-column: 1 / -1;
-     grid-row: 5 / span 1;
-     max-height: 675px;
-}
-.contact-image{
-     grid-column: 1 / -1;
-     grid-row: 6 / span 1;
-     max-height: 675px;
-}
-.container img {
+
+.accounts,      .accounts-image      { grid-row: 2 / span 1; }
+.onlinebanking, .onlinebanking-image { grid-row: 3 / span 1; }
+.security,      .security-image      { grid-row: 4 / span 1; }
+.loans,         .loans-image         { grid-row: 5 / span 1; }
+.contact,       .contact-image       { grid-row: 6 / span 1; }
+
+.accounts-image img,
+.onlinebanking-image img,
+.security-image img,
+.loans-image img,
+.contact-image img{
   width: 100%;
   height: 100%;
+  max-height: 675px;
   object-fit: cover;
 }
       /*This will be a lot of rules.... but be strategic and combine selectors*/
@@ -107,7 +86,10 @@ nav a:focus{
 
  /* Step 8: Write the selector/rule property to style the .text-block class. */
 .text-block{
+     display: grid;
      text-align: center;
+     justify-self: center;
+     align-self: center;
 }
 .text-block ul{
      text-align: left;
@@ -127,78 +109,35 @@ nav {
 .container{
      display: grid;
      grid-template-columns: repeat(7, 1fr);
-     gap: 13px;
 }
 
   /* Steps 12 - 15: Update the grid-column property of the grid's children (where-needed)*/
-.accounts{
+.accounts,
+.security,
+.contact {
      grid-column: 4 / span 3;
-     grid-row: 2 / span 1;
-     margin: 70px 0 70px 0;
-}
-.security{
-     grid-column: 4 / span 3;
-     grid-row: 4 / span 1;
-     margin: 110px 0 90px 0;
-}
-.contact{
-     grid-column: 4 / span 3;
-     grid-row: 6 / span 1;
-     margin: 70px 0 70px 0;
 }
 
+.accounts-image,
+.security-image,
+.contact-image {
+     grid-column: 1 / span 5;
+}
 
-.onlinebanking{
+.onlinebanking,
+.loans {
      grid-column: 2 / span 3;
-     grid-row: 3 / span 1;
-     margin: 80px 0 60px 0;
-}
-.loans{
-     grid-column: 2 / span 3;
-     grid-row: 5 / span 1;
-     margin: 80px 0 60px 0;
 }
 
-.accounts-image{
-     grid-column: 1 / span 5;
-     grid-row: 2 / span 1;
-     /* max-height: 675px; */
-}
-.onlinebanking-image{
+.onlinebanking-image,
+.loans-image {
      grid-column: 3 / span 5;
-     grid-row: 3 / span 1;
-     /* max-height: 675px; */
-}
-.security-image{
-     grid-column: 1 / span 5;
-     grid-row: 4 / span 1;
-     /* max-height: 675px; */
-}
-.loans-image{
-     grid-column: 3 / span 5;
-     grid-row: 5 / span 1;
-     /* max-height: 675px; */
-}
-.contact-image{
-     grid-column: 1 / span 5;
-     grid-row: 6 / span 1;
-     /* max-height: 675px; */
-}
-.container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
  /* Step 16:Write the selector/rule property to update the .text-block class */
 .text-block {
     max-height: 235px;
-    overflow-y: hidden;
-    scrollbar-gutter: stable;
+    overflow: auto;
 }
 
-.text-block:hover,
-.text-block:focus {
-    overflow-y: auto;
-}
 }
